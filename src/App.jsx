@@ -7,7 +7,12 @@ import "./App.css";
 function App() {
   const [count, setCount] = useState(0); // Define state for the count
 
-  return <Navbar counter={count} />; // Pass the count as a prop to Navbar
+  return (
+    <>
+      <Navbar counter={count} />
+      <Herosection />
+    </>
+  );
 }
 
 function Navbar({ counter }) {
@@ -97,6 +102,47 @@ function Navbar({ counter }) {
         </section>
       </article>
     </nav>
+  );
+}
+
+function Herosection() {
+  return (
+    <div className="container col-xxl-8 px-4 py-5">
+      <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div className="col-10 col-sm-8 col-lg-6">
+          <img
+            src="./public/Hero img.jpeg"
+            className="d-block mx-lg-auto img-fluid"
+            alt="Multiple People Shopping Illustration"
+            width="700"
+            height="500"
+            loading="lazy"
+          />
+        </div>
+        <div className="col-lg-6">
+          <h1 className="display-5 fw-bold lh-1 mb-3">
+            Welcome to Our Shopping Cart
+          </h1>
+          <p className="lead">
+            Discover amazing deals and shop your favorite products!
+          </p>
+          <div className="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button
+              type="button"
+              className="btn btn-primary btn-lg px-4 me-md-2"
+            >
+              Shop Now!
+            </button>
+            <button
+              type="button"
+              className="btn btn-outline-secondary btn-lg px-4"
+            >
+              Learn More &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
