@@ -147,6 +147,7 @@ function App() {
           />
         ))}
       </article>
+      <FooterComp />
     </>
   );
 }
@@ -362,6 +363,37 @@ function StarRating({ product }) {
       <span className="content-title">Rating:</span>{" "}
       <span className="content-star">{stars}</span>
       <span className="content-count"> ({ratingCount})</span>
+    </div>
+  );
+}
+
+function FooterComp() {
+  const currentYear = new Date().getFullYear();
+  return (
+    <div className="container">
+      <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top display-6 fw-bold">
+        <div className="col-md-4 d-flex align-items-center">
+          <span className="text-muted">© {currentYear} Shopping Cart Inc</span>
+        </div>
+
+        <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <li className="ms-3">
+            <a className="text-muted" href="#">
+              <i className="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li className="ms-3">
+            <a className="text-muted" href="#">
+              <i className="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li className="ms-3">
+            <a className="text-muted" href="#">
+              <i className="fa fa-youtube-square" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </footer>
     </div>
   );
 }
