@@ -137,6 +137,16 @@ function App() {
     <>
       <Navbar counter={count} />
       <Herosection />
+      <article className="product-container">
+        {ProductData.map((product, index) => (
+          <ProductSpace
+            productDetails={product}
+            key={index}
+            count={count}
+            setCount={setCount}
+          />
+        ))}
+      </article>
     </>
   );
 }
@@ -268,6 +278,90 @@ function Herosection() {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+// Reusable Component for displaying products
+function ProductSpace({ productDetails, count, setCount }) {
+  const [show, setshow] = useState(true);
+  function addCart() {
+    setshow(!show);
+    setCount(count + 1);
+  }
+  function removeCart() {
+    setshow(!show);
+    setCount(count - 1);
+  }
+  return (
+    <section className="product">
+      <div className="img-container">
+        <img
+          src={productDetails.image}
+          alt={productDetails.title}
+          className="product-img"
+        />
+      </div>
+      <div className="details-container">
+        <p className="product-title">{productDetails.title}</p>
+        <h3 className="product-price">${productDetails.price.toFixed(2)}</h3>
+        <p className="product-rating">
+          {}
+          <StarRating product={productDetails} />{" "}
+        </p>
+      </div>
+      {show ? (
+        <div className="btn-container">
+          <button className="btn btn-primary" onClick={addCart}>
+            Add To Cart
+          </button>
+        </div>
+      ) : (
+        <div className="btn-container">
+          <button className="btn btn-danger" onClick={removeCart}>
+            Remove From Cart
+          </button>
+        </div>
+      )}
+    </section>
+  );
+}
+
+// Star Rating Component
+function StarRating({ product }) {
+  const stars = [];
+
+  const rating = Number(product.rating.rate);
+  const ratingCount = Number(product.rating.count);
+
+  // Calculate the number of full stars
+  const fullStars = Math.floor(rating);
+
+  // Calculate whether to display a half star
+  const hasHalfStar = rating % 1 !== 0;
+
+  // Loop to render full stars
+  for (let i = 0; i < fullStars; i++) {
+    stars.push(<i key={i} className="fa fa-star" aria-hidden="true"></i>);
+  }
+
+  // Add half star if applicable
+  if (hasHalfStar) {
+    stars.push(
+      <i key="half" className="fa fa-star-half-o" aria-hidden="true"></i>
+    );
+  }
+
+  // Fill remaining stars with empty stars
+  for (let i = stars.length; i < 5; i++) {
+    stars.push(<i key={i} className="fa fa-star-o" aria-hidden="true"></i>);
+  }
+
+  return (
+    <div className="star-rating">
+      <span className="content-title">Rating:</span>{" "}
+      <span className="content-star">{stars}</span>
+      <span className="content-count"> ({ratingCount})</span>
     </div>
   );
 }
