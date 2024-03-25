@@ -267,7 +267,7 @@ function Herosection() {
         <div className="col-10 col-sm-8 col-lg-6">
           {/* Image */}
           <img
-            src="./public/Hero img.jpeg" // Image source
+            src="/Hero img.jpeg" // Image source
             className="d-block mx-lg-auto img-fluid" // Image styling
             alt="Multiple People Shopping Illustration" // Alt text for accessibility
             width="700" // Image width
