@@ -6,6 +6,7 @@ import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0); // Define state for the count
+
   // Fake Store App Data
   const ProductData = [
     {
@@ -152,11 +153,17 @@ function App() {
   );
 }
 
+// Nav Bar Component
+
 function Navbar({ counter }) {
   return (
+    // Navbar container
     <nav className="nav navbar navbar-expand-lg bg-body-tertiary sticky-top">
+      {/* Container for navbar content */}
       <article className="container-fluid js">
+        {/* Navbar brand */}
         <a className="navbar-brand" href="#">
+          {/* Logo */}
           <img
             className="logo-img"
             src="/shopping logo.svg"
@@ -164,6 +171,7 @@ function Navbar({ counter }) {
           />
           Shopping Cart
         </a>
+        {/* Navbar toggle button */}
         <button
           className="navbar-toggler"
           type="button"
@@ -175,21 +183,25 @@ function Navbar({ counter }) {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+        {/* Navbar links */}
         <section className="collapse navbar-collapse" id="navbarScroll">
           <ul
             className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
             style={{ "--bs-scroll-height": "100px" }}
           >
+            {/* Home link */}
             <li className="nav-item">
               <a className="nav-link" aria-current="page" href="#">
                 Home
               </a>
             </li>
+            {/* About link */}
             <li className="nav-item">
               <a className="nav-link" href="#">
                 About
               </a>
             </li>
+            {/* Shop dropdown */}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -200,6 +212,7 @@ function Navbar({ counter }) {
               >
                 Shop
               </a>
+              {/* Dropdown menu */}
               <ul className="dropdown-menu">
                 <li>
                   <a className="dropdown-item" href="#">
@@ -222,6 +235,7 @@ function Navbar({ counter }) {
               </ul>
             </li>
           </ul>
+          {/* Cart button */}
           <form className="d-flex" role="search">
             <button
               className="btn btn-outline-dark"
@@ -230,7 +244,7 @@ function Navbar({ counter }) {
               <span className="cart-icon">
                 <i className="fa fa-shopping-cart me-1"></i>
               </span>
-              Cart{" "}
+              Cart {/* Cart counter */}
               <span className="badge bg-dark text-white ms-1 rounded-pill ">
                 {counter}
               </span>
@@ -242,34 +256,45 @@ function Navbar({ counter }) {
   );
 }
 
+// hero section Component
+
 function Herosection() {
   return (
     <div className="container col-xxl-8 px-4 py-5">
+      {/* Row for flex layout */}
       <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
+        {/* Column for image */}
         <div className="col-10 col-sm-8 col-lg-6">
+          {/* Image */}
           <img
-            src="./public/Hero img.jpeg"
-            className="d-block mx-lg-auto img-fluid"
-            alt="Multiple People Shopping Illustration"
-            width="700"
-            height="500"
-            loading="lazy"
+            src="./public/Hero img.jpeg" // Image source
+            className="d-block mx-lg-auto img-fluid" // Image styling
+            alt="Multiple People Shopping Illustration" // Alt text for accessibility
+            width="700" // Image width
+            height="500" // Image height
+            loading="lazy" // Lazy loading
           />
         </div>
+        {/* Column for text content */}
         <div className="col-lg-6">
+          {/* Title */}
           <h1 className="display-5 fw-bold lh-1 mb-3">
             Welcome to Our Shopping Cart
           </h1>
+          {/* Description */}
           <p className="lead">
             Discover amazing deals and shop your favorite products!
           </p>
+          {/* Buttons */}
           <div className="d-grid gap-2 d-md-flex justify-content-md-start">
+            {/* Primary button */}
             <button
               type="button"
               className="btn btn-primary btn-lg px-4 me-md-2"
             >
               Shop Now!
             </button>
+            {/* Secondary button */}
             <button
               type="button"
               className="btn btn-outline-secondary btn-lg px-4"
@@ -285,15 +310,21 @@ function Herosection() {
 
 // Reusable Component for displaying products
 function ProductSpace({ productDetails, count, setCount }) {
-  const [show, setshow] = useState(true);
+  // To conditionally show or hide the button
+  const [show, setShow] = useState(true); // State to manage button visibility
+
+  // Function to add product to cart
   function addCart() {
-    setshow(!show);
-    setCount(count + 1);
+    setShow(!show); // Toggle button visibility
+    setCount(count + 1); // Increment cart count
   }
+
+  // Function to remove product from cart
   function removeCart() {
-    setshow(!show);
-    setCount(count - 1);
+    setShow(!show); // Toggle button visibility
+    setCount(count - 1); // Decrement cart count
   }
+
   return (
     <section className="product">
       <div className="img-container">
@@ -307,10 +338,11 @@ function ProductSpace({ productDetails, count, setCount }) {
         <p className="product-title">{productDetails.title}</p>
         <h3 className="product-price">${productDetails.price.toFixed(2)}</h3>
         <div className="product-rating">
-          {}
+          {/* Render star rating component */}
           <StarRating product={productDetails} />{" "}
         </div>
       </div>
+      {/* Conditionally render add to cart or remove from cart button */}
       {show ? (
         <div className="btn-container">
           <button className="btn btn-primary" onClick={addCart}>
@@ -367,16 +399,25 @@ function StarRating({ product }) {
   );
 }
 
+// Footer Component
+
 function FooterComp() {
+  // Get the current year
   const currentYear = new Date().getFullYear();
+
   return (
     <div className="container">
+      {/* Footer section */}
       <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top display-6 fw-bold">
+        {/* Left section of the footer */}
         <div className="col-md-4 d-flex align-items-center">
+          {/* Copyright information */}
           <span className="text-muted">© {currentYear} Shopping Cart Inc</span>
         </div>
 
+        {/* Right section of the footer */}
         <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
+          {/* Social media links */}
           <li className="ms-3">
             <a className="text-muted" href="#">
               <i className="fa fa-facebook" aria-hidden="true"></i>
