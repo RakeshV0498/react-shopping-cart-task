@@ -305,10 +305,10 @@ function ProductSpace({ productDetails, count, setCount }) {
       <div className="details-container">
         <p className="product-title">{productDetails.title}</p>
         <h3 className="product-price">${productDetails.price.toFixed(2)}</h3>
-        <p className="product-rating">
+        <div className="product-rating">
           {}
           <StarRating product={productDetails} />{" "}
-        </p>
+        </div>
       </div>
       {show ? (
         <div className="btn-container">
