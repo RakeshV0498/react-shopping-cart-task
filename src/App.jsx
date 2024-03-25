@@ -11,67 +11,91 @@ function App() {
 }
 
 function Navbar({ counter }) {
-  // Destructure the prop 'count' as 'counter'
   return (
-    <nav className="nav-bar">
-      <a className="home-link" href="#">
-        {" "}
-        <img src="/shopping logo.svg" alt="logo" className="logo-img" />
-      </a>
-      <ul className="nav text-font">
-        <li className="nav-item">
-          <a className="nav-link" aria-current="page" href="#">
-            Home
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" aria-current="page" href="#">
-            About
-          </a>
-        </li>
-        <li className="nav-item dropdown">
-          <a
-            className="nav-link dropdown-toggle"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-expanded="false"
+    <nav className="nav navbar navbar-expand-lg bg-body-tertiary sticky-top">
+      <article className="container-fluid js">
+        <a className="navbar-brand" href="#">
+          <img
+            className="logo-img"
+            src="/shopping logo.svg"
+            alt="Shopping-cart icon"
+          />
+          Shopping Cart
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarScroll"
+          aria-controls="navbarScroll"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <section className="collapse navbar-collapse" id="navbarScroll">
+          <ul
+            className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+            style={{ "--bs-scroll-height": "100px" }}
           >
-            Shop
-          </a>
-          <ul className="dropdown-menu">
-            <li>
-              <a className="dropdown-item" href="#">
-                All Products
+            <li className="nav-item">
+              <a className="nav-link" aria-current="page" href="#">
+                Home
               </a>
             </li>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Popular Items
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                About
               </a>
             </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                New Arrivals
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Shop
               </a>
+              <ul className="dropdown-menu">
+                <li>
+                  <a className="dropdown-item" href="#">
+                    All Products
+                  </a>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Popular Items
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    New Arrivals
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
-        </li>
-      </ul>
-      <form className="d-flex">
-        <button className="btn btn-outline-dark">
-          <span className="cart-icon">
-            <i className="fa fa-shopping-cart me-1"></i>
-          </span>
-          Cart{" "}
-          <span className="badge bg-dark text-white ms-1 rounded-pill ">
-            {counter} {/* Display the count received from props */}
-          </span>
-        </button>
-      </form>
+          <form className="d-flex" role="search">
+            <button
+              className="btn btn-outline-dark"
+              onClick={(e) => e.preventDefault()}
+            >
+              <span className="cart-icon">
+                <i className="fa fa-shopping-cart me-1"></i>
+              </span>
+              Cart{" "}
+              <span className="badge bg-dark text-white ms-1 rounded-pill ">
+                {counter}
+              </span>
+            </button>
+          </form>
+        </section>
+      </article>
     </nav>
   );
 }
